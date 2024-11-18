@@ -1,6 +1,7 @@
 services:
-  image: ghcr.io/danielproctor31/cronzilla:main
-  container_name: cronzilla
-  restart: unless-stopped
-  volumes:
-    - ./run.sh:/cron/run.sh
+  cronzilla:
+    image: ghcr.io/danielproctor31/cronzilla:main
+    container_name: cronzilla
+    restart: unless-stopped
+    volumes:
+      - ./run.sh:/cron/run.sh

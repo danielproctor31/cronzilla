@@ -18,5 +18,6 @@ RUN chmod 0644 "cronconfig"
 ## setup cron configs
 RUN crontab "cronconfig"
 
-# start container with crond
-CMD ["crond", "-f"]
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]

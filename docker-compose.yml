@@ -1,9 +1,8 @@
 services:
   cronzilla:
-    build:
-      context: .
-      args:
-        CRON_INTERVAL: '*/5 * * * *'
+    image: ghcr.io/danielproctor31/cronzilla:main
+    environment:
+      - CRON_INTERVAL='*/5 * * * *'
     container_name: cronzilla
     restart: unless-stopped
     volumes:

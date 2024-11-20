@@ -5,7 +5,7 @@ WORKDIR /cron
 
 COPY cronconfig cronconfig
 
-RUN apk update \
+RUN apk update && \
     apk add curl
 
 RUN chmod 0644 "cronconfig"

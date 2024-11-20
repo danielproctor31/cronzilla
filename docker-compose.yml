@@ -1,7 +1,11 @@
 services:
   cronzilla:
+    build:
+      args:
+        CRON_INTERVAL: '*/5 * * * *'
     image: ghcr.io/danielproctor31/cronzilla:main
     container_name: cronzilla
     restart: unless-stopped
     volumes:
+      - ./packages.txt:/packages.txt
       - ./run.sh:/cron/run.sh

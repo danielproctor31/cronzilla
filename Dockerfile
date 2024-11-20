@@ -1,15 +1,11 @@
 FROM alpine:latest
 
+ARG CRON_INTERVAL='*/5 * * * *'
+
 RUN mkdir /cron
 WORKDIR /cron
 
-COPY cronconfig cronconfig
-
-RUN apk update && \
-    apk add curl
-
-RUN chmod 0644 "cronconfig"
-RUN crontab "cronconfig"
+RUN echo "${CRON_INTERVAL} /cron/run.sh >> /proc/1/fd/1 2>/proc/1/fd/2" > cronconfig
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
